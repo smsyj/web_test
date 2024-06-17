@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBL - Flash Game Website</title>
+    <link rel="stylesheet" type="text/css" href="css/tetris.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .logout-btn {
+            background-color: #f00;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu {
+            width: 200px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin-right: 20px;
+        }
+        .menu h2 {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+            font-size: 18px;
+        }
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu ul li {
+            border-bottom: 1px solid #ccc;
+        }
+        .menu ul li a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        .menu ul li a:hover {
+            background-color: #f0f0f0;
+        }
+        .content {
+            flex-grow: 1;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript" src="js/tetris.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>유한대학교 PBL 프로젝트</h1>
+        <button class="logout-btn" onclick="confirmLogout()">로그아웃</button>
+    </header>
+
+    <div class="container">
+        <div class="menu">
+            <h2>게임 메뉴</h2>
+            <ul>
+                <li><a href="#2048">2048</a></li>
+                <li><a href="#baduk">바둑</a></li>
+                <li><a href="#omok">오목</a></li>
+                <li><a href="#chess">체스</a></li>
+                <li><a href="#minesweeper">지뢰찾기</a></li>
+                <li><a href="#chess">체스</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>PBL 테트리스</h1>
+            <div class="wrapper-container">
+                <span class="tetris-container">
+                    <canvas id="stage" width="250px" height="500px" style="background-color:black;"></canvas>
+                    <span class="tetris-panel-container">
+                        <p>Next:</p>
+                        <canvas id="next" width="150px" height="150px" style="background-color:black;"></canvas>
+                        <p>LINES:<span id="lines">0</span></p>
+                        <p><span id="message"></span></p>
+                        <div class="tetris-panel-container-padding"></div>
+                        <table class="tetris-button-panel">
+                            <tr>
+                                <td></td>
+                                <td id="tetris-rotate-button" class="tetris-button">↻</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td id="tetris-move-left-button" class="tetris-button">←</td>
+                                <td id="tetris-fall-button" class="tetris-button">↓</td>
+                                <td id="tetris-move-right-button" class="tetris-button">→</td>
+                            </tr>
+                        </table>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2024 PBL - Flash Game Website 유한대학교 PBL 프로젝트
+    </footer>
+
+    <script>
+        function confirmLogout() {
+            var confirmation = confirm("로그아웃 하시겠습니까?");
+            if (confirmation) {
+                document.getElementById("logout-link").click();
+            } else {
+                return false;
+            }
+        }
+        
+        var tetris = new Tetris();
+        tetris.startGame();
+    </script>
+</body>
+</html>
